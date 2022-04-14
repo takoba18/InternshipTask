@@ -9,6 +9,7 @@ public class Graphics {
     public static void main(String[] args) {
         School school = new School();
 
+        //Creating frame
         JFrame frame = new JFrame("School");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 700);
@@ -29,7 +30,6 @@ public class Graphics {
         JButton disT = new JButton("Display Teachers");
         JButton disP = new JButton("Display Pupils");
         JButton remove = new JButton("Remove Teacher");
-
 
         //Adding created components to the panel
         panel.add(teach);

@@ -51,7 +51,6 @@ public class School {
 
     //Get teacher
     public Iterator<String> getTeachers(String pupil) {
-
         Set<String> ans = new HashSet<>();
         Set<String> list = pupils.get(pupil);
         if (list == null) return null;
