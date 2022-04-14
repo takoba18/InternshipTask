@@ -11,7 +11,7 @@ public class Graphics extends School {
 
         JFrame frame = new JFrame("School");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 500);
+        frame.setSize(900, 700);
 
         //Creating text fields and labels
         JPanel panel = new JPanel();
@@ -59,15 +59,19 @@ public class Graphics extends School {
         disT.addActionListener(e -> {
             ta.setText("");
             Iterator it = school.getTeachers(pupil.getText());
-            while (it.hasNext()) {
-                ta.append(it.next() + "\n");
+            if (it != null) {
+                while (it.hasNext()) {
+                    ta.append(it.next() + "\n");
+                }
             }
         });
         disP.addActionListener(e -> {
             ta.setText("");
             Iterator it = school.getPupils(teacher.getText());
-            while (it.hasNext()) {
-                ta.append(it.next() + "\n");
+            if (it != null) {
+                while (it.hasNext()) {
+                    ta.append(it.next() + "\n");
+                }
             }
         });
     }

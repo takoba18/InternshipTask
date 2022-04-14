@@ -56,10 +56,10 @@ public class School {
     public Iterator getTeachers(String pupil) {
         List<String> ans = new ArrayList<>();
         List<String> list = pupils.get(pupil);
+        if (list == null) return null;
         for (String s : list) {
             for (String key : teachers.keySet()) {
                 if (teachers.get(key).contains(s)) {
-                    System.out.println(key);
                     ans.add(key);
                 }
             }
@@ -71,6 +71,7 @@ public class School {
     public Iterator getPupils(String teacher) {
         List<String> ans = new ArrayList<>();
         List<String> list = teachers.get(teacher);
+        if (list == null) return null;
         for (String s : list) {
             for (String key : subjects.keySet()) {
                 if (key.equals(s)) ans.addAll(subjects.get(key));
