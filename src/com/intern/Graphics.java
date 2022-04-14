@@ -4,14 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Iterator;
 
-public class Graphics extends School {
+public class Graphics {
 
     public static void main(String[] args) {
         School school = new School();
 
         JFrame frame = new JFrame("School");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(900, 700);
+        frame.setSize(1000, 700);
 
         //Creating text fields and labels
         JPanel panel = new JPanel();
@@ -28,6 +28,8 @@ public class Graphics extends School {
         JButton AddP = new JButton("Add Pupil");
         JButton disT = new JButton("Display Teachers");
         JButton disP = new JButton("Display Pupils");
+        JButton remove = new JButton("Remove Teacher");
+
 
         //Adding created components to the panel
         panel.add(teach);
@@ -41,6 +43,7 @@ public class Graphics extends School {
         panel.add(AddP);
         panel.add(disP);
         panel.add(disT);
+        panel.add(remove);
 
         //Creating textarea for displaying pupils and teachers
         JTextArea ta = new JTextArea();
@@ -54,11 +57,15 @@ public class Graphics extends School {
         AddT.addActionListener(e -> school.addTeacher(teacher.getText()));
         AddS.addActionListener(e -> school.addSubject(teacher.getText(), subject.getText()));
         AddP.addActionListener(e -> school.addPupil(pupil.getText(), subject.getText()));
+        remove.addActionListener(e -> {
+            ta.setText("");
+            school.removeTeacher(teacher.getText());
+        });
 
         //Adding action listeners to display buttons and displaying content
         disT.addActionListener(e -> {
             ta.setText("");
-            Iterator it = school.getTeachers(pupil.getText());
+            Iterator<String> it = school.getTeachers(pupil.getText());
             if (it != null) {
                 while (it.hasNext()) {
                     ta.append(it.next() + "\n");
@@ -67,7 +74,7 @@ public class Graphics extends School {
         });
         disP.addActionListener(e -> {
             ta.setText("");
-            Iterator it = school.getPupils(teacher.getText());
+            Iterator<String> it = school.getPupils(teacher.getText());
             if (it != null) {
                 while (it.hasNext()) {
                     ta.append(it.next() + "\n");
